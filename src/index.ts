@@ -36,3 +36,45 @@ export function addingCommasToNumber(input: Input) {
     return "" + res;
   }
 }
+
+export function convertToFixed(num: string, toFixed: number) {
+  if (!num) {
+    return "0";
+  }
+  let x = Number(num);
+  if (toFixed != null || toFixed != undefined) {
+    return x.toFixed(toFixed);
+  }
+  return x;
+}
+
+export function getDecimal(el: string, prevValue: string) {
+  var ex = /^\d*\.?\d{0,2}$/;
+  if (ex.test(el) == false) {
+    el = prevValue != null ? prevValue : el.substring(0, el.length - 1);
+  }
+  return el;
+}
+
+export function get7DecimalAtMax(el: string, prevValue: string) {
+  var ex = /^\d*\.?\d{0,7}$/;
+  if (ex.test(el) == false) {
+    el = prevValue != null ? prevValue : el.substring(0, el.length - 1);
+  }
+  return el;
+}
+
+export const convertToPaisa = (value: string) => {
+  if (value) {
+    let newValue = parseFloat(value) * 100;
+    return isNaN(newValue) ? 0 : Math.round(newValue);
+  }
+  return 0;
+};
+export const convertToRupees = (value: string) => {
+  if (value) {
+    let newValue = parseFloat(value) / 100;
+    return newValue;
+  }
+  return 0;
+};
