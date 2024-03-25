@@ -16,6 +16,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "14"
+           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
         run: npm install
@@ -25,13 +26,10 @@ jobs:
 
       - name: Bump version and publish to npm
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          token: ${{secrets.PERSONAL_TOKEN}}
         run: |
-          git config --global user.email "aanikhilsoni@gmail.com"
-          git config --global user.name "Nikhil"
           npm version prerelease -m "Auto increment pre-release version to %s [skip ci]" --force
           npm publish --access=public
-        with:
-          registry-url: "https://npm.pkg.github.com"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+         
+       
