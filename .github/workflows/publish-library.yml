@@ -31,4 +31,5 @@ jobs:
         run: |
           git config --global user.email "aanikhilsoni@gmail.com"
           git config --global user.name "Nikhil soni"
-          npm publish --access public
+          npm version prerelease -m "Auto increment pre-release version to %s [skip ci]" --force
+          npm publish --access=public
