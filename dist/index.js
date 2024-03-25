@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.convertToRupees = exports.convertToPaisa = exports.get7DecimalAtMax = exports.getDecimal = exports.convertToFixed = exports.addingCommasToNumber = void 0;
+exports.toFixedWithoutRounding = exports.convertToRupees = exports.convertToPaisa = exports.get7DecimalAtMax = exports.getDecimal = exports.convertToFixed = exports.addingCommasToNumber = void 0;
 // adding commas to number
 function addingCommasToNumber(input) {
     let { x, onlyNum } = input;
@@ -79,3 +79,15 @@ const convertToRupees = (value) => {
     return 0;
 };
 exports.convertToRupees = convertToRupees;
+function toFixedWithoutRounding(num, fixed) {
+    if (!num) {
+        return num;
+    }
+    num = num.toString();
+    const decimalIndex = num.indexOf(".");
+    if (decimalIndex === -1 || fixed < 0) {
+        return num;
+    }
+    return Number(num.slice(0, decimalIndex + (fixed + 1)));
+}
+exports.toFixedWithoutRounding = toFixedWithoutRounding;
