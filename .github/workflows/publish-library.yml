@@ -28,5 +28,10 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          npm version patch -m "Bump version to %s"
+          $BranchName = "$(Build.SourceBranch)" -replace "refs/heads/"
+          git checkout $BranchName
+          git config --global user.email "aanikhilsoni@gmail.com"
+          git config --global user.name "Nikhil soni"
+          npm version prerelease -m "Auto increment pre-release version to %s [skip ci]" --force
           npm publish --access public
+          git push
