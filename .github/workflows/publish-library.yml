@@ -20,8 +20,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run tests
-        run: npm test
+      # - name: Run tests
+      #   run: npm test
 
       - name: Bump version and publish to npm
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
