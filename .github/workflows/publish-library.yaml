@@ -28,7 +28,7 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
           git config --global user.email "aanikhilsoni@gmail.com"
-          git config --global user.name "Nikhil"
+          git config --global user.name "Nikhil soni"
           npm version prerelease -m "Auto increment pre-release version to %s [skip ci]" --force
           git push
         env:
