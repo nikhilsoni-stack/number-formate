@@ -1,9 +1,7 @@
 name: Publish to npm on PR merge
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   publish:
@@ -31,5 +29,6 @@ jobs:
           git config --global user.name "Nikhil soni"
           npm version prerelease -m "Auto increment pre-release version to %s [skip ci]" --force
           git push
+          npm publish --access=public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
