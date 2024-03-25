@@ -78,3 +78,15 @@ export const convertToRupees = (value: string) => {
   }
   return 0;
 };
+
+export function toFixedWithoutRounding(num: string, fixed: number) {
+  if (!num) {
+    return num;
+  }
+  num = num.toString();
+  const decimalIndex = num.indexOf(".");
+  if (decimalIndex === -1 || fixed < 0) {
+    return num;
+  }
+  return Number(num.slice(0, decimalIndex + (fixed + 1)));
+}
