@@ -24,6 +24,8 @@ jobs:
       #   run: npm test
 
       - name: Bump version and publish to npm
+        with:
+          registry-url: "https://npm.pkg.github.com"
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
