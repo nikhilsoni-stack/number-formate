@@ -1,5 +1,6 @@
 import { Input } from "./types";
 
+// adding commas to number
 export function addingCommasToNumber(input: Input) {
   let { x, onlyNum } = input;
   if (!x) {
