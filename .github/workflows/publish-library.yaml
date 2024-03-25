@@ -1,7 +1,9 @@
 name: Publish to npm on PR merge
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   publish:
