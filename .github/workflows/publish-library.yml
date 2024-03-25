@@ -28,7 +28,6 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          git checkout main
           git config --global user.email "aanikhilsoni@gmail.com"
           git config --global user.name "Nikhil"
           npm version prerelease -m "Auto increment pre-release version to %s [skip ci]" --force
